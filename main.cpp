@@ -7,8 +7,8 @@ constexpr uint LED_PIN = PICO_DEFAULT_LED_PIN; // 25
 
 int main() {
   // Project discripsion.
-  bi_decl(bi_program_description("This is a jade firmware test for RP2040."));
-  bi_decl(bi_1pin_with_name(LED_PIN, "On-board LED"));
+  bi_decl(bi_program_description("This is a skelton project for RP2040."));
+  bi_decl(bi_1pin_with_name(LED_PIN, "Pico on-board LED"));
 
   // Init stdio
   stdio_init_all();
