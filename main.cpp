@@ -3,7 +3,7 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
-const uint LED_PIN = 25;
+constexpr uint LED_PIN = PICO_DEFAULT_LED_PIN; // 25
 
 int main() {
   // Project discripsion.
