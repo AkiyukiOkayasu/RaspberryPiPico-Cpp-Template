@@ -2,8 +2,9 @@
 #include "pico/binary_info.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
+#include <cstdint>
 
-constexpr uint LED_PIN = PICO_DEFAULT_LED_PIN; // 25
+constexpr unsigned int LED_PIN = PICO_DEFAULT_LED_PIN; // 25
 
 int main() {
   // Project discripsion.
