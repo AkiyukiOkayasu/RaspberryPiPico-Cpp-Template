@@ -1,8 +1,8 @@
 #include "hardware/gpio.h"
 #include "pico/binary_info.h"
 #include "pico/stdlib.h"
-#include <stdio.h>
 #include <cstdint>
+#include <cstdio>
 
 constexpr unsigned int LED_PIN = PICO_DEFAULT_LED_PIN; // 25
 
@@ -20,6 +20,7 @@ int main() {
 
   // Blink LED
   while (1) {
+    std::printf("test\n");
     gpio_put(LED_PIN, 1);
     sleep_ms(250);
     gpio_put(LED_PIN, 0);
