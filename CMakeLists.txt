@@ -7,9 +7,20 @@ set(CMAKE_C_STANDARD 11)#C11
 set(CMAKE_CXX_STANDARD 17)#C++17
 pico_sdk_init()
 
-add_executable(example_project_name
+# SEGGER RTTのパス変数
+set(RTT_DIR ${CMAKE_CURRENT_LIST_DIR}/SEGGER_RTT_V756d)
+
+add_executable(${PROJECT_NAME}
     main.cpp
+    ${RTT_DIR}/RTT/SEGGER_RTT.c
+    ${RTT_DIR}/RTT/SEGGER_RTT_printf.c
 )
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+  ${CMAKE_CURRENT_LIST_DIR}
+  ${RTT_DIR}/Config
+  ${RTT_DIR}/RTT
+  )
 
 add_compile_options(-Wall
 # -Wno-format
@@ -17,7 +28,7 @@ add_compile_options(-Wall
 # -Wno-maybe-uninitialized
 )
 
-pico_enable_stdio_usb(example_project_name 1)# Enable stdio to USB serial
-pico_enable_stdio_uart(example_project_name 0)# Disable stdio to UART
-pico_add_extra_outputs(example_project_name)# Create map/bin/hex/uf2 file etc.
-target_link_libraries(example_project_name pico_stdlib)
+pico_enable_stdio_usb(${PROJECT_NAME} 1)# Enable stdio to USB serial
+pico_enable_stdio_uart(${PROJECT_NAME} 0)# Disable stdio to UART
+pico_add_extra_outputs(${PROJECT_NAME})# Create map/bin/hex/uf2 file etc.
+target_link_libraries(${PROJECT_NAME} pico_stdlib)
