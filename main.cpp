@@ -1,3 +1,4 @@
+#include "SEGGER_RTT.h"
 #include "constants.hpp"
 #include "hardware/gpio.h"
 #include "pico/binary_info.h"
@@ -19,10 +20,12 @@ int main()
     gpio_init (pin::led);
     gpio_set_dir (pin::led, GPIO_OUT);
 
-    // Blink LED
     while (1)
     {
-        std::printf ("test\n");
+        std::printf ("test\n");                                     //USB-Serial console output
+        SEGGER_RTT_WriteString (0, "Hello World from SEGGER!\r\n"); //SEGGER RTT console output
+
+        //LED blink
         gpio_put (pin::led, 1);
         sleep_ms (250);
         gpio_put (pin::led, 0);
