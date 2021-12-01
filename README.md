@@ -1,6 +1,6 @@
-# RP2040-skelton
+# Raspberry Pi Pico C++ Template
 
-Project template for Raspberry Pi Pico using C/C++ SDK.
+Template for Raspberry Pi Pico using C/C++ SDK.
 
 - VSCode + CMake
 - SEGGER RTT
