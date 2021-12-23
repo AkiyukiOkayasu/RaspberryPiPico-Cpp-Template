@@ -15,7 +15,7 @@ pico_sdk_init()
 # FetchContent_Declare(pum GIT_REPOSITORY https://github.com/AkiyukiOkayasu/pum GIT_TAG v1.0.2)
 # FetchContent_MakeAvailable(pum)
 # ame for DSP
-# FetchContent_Declare(ame GIT_REPOSITORY https://github.com/AkiyukiOkayasu/ame GIT_TAG v0.6.0)
+# FetchContent_Declare(ame GIT_REPOSITORY https://github.com/AkiyukiOkayasu/ame GIT_TAG v1.0.1)
 # FetchContent_MakeAvailable(ame)
 
 # SEGGER RTTのパス変数
@@ -25,6 +25,8 @@ add_executable(${PROJECT_NAME}
     main.cpp
     ${RTT_DIR}/RTT/SEGGER_RTT.c
     ${RTT_DIR}/RTT/SEGGER_RTT_printf.c
+    # ${RTT_DIR}/RTT/SEGGER_RTT_ASM_ARMv7M.S
+    # ${RTT_DIR}/Syscalls/SEGGER_RTT_Syscalls_GCC.c
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
