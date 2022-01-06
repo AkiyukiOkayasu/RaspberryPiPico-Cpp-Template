@@ -47,6 +47,7 @@ int main()
     const int q = 15; //Q15 16bit固定小数点数指定
 
     {
+        //pico_float version
         absolute_time_t begin;
         absolute_time_t end;
         volatile float x = 0.0f;
@@ -61,6 +62,7 @@ int main()
     }
 
     {
+        //division fix to float version
         absolute_time_t begin;
         absolute_time_t end;
         volatile float x = 0.0f;
@@ -73,6 +75,9 @@ int main()
         const auto t = absolute_time_diff_us (begin, end);
         std::printf ("float div time: %llu\n", t);
     }
+
+    // fix2float time: 25798
+    // float div time: 20512
 
     while (1)
     {
