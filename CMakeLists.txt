@@ -50,6 +50,7 @@ target_link_libraries(${PROJECT_NAME}
   # hardware_i2c
   # hardware_pwm
   # hardware_adc
+  hardware_clocks
   # hardware_pio
   # tinyusb_device
   # pum
