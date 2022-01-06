@@ -11,6 +11,8 @@
 
 #include "SEGGER_RTT.h"
 #include "constants.hpp"
+#include "pico/time.h"
+#include "pico/types.h"
 // #include "pum.hpp"
 
 #include <cstdint>
@@ -38,14 +40,42 @@ int main()
     // Init GPIO
     gpio_init (pin::led);
     gpio_set_dir (pin::led, GPIO_OUT);
+    gpio_put (pin::led, 1);
+
+    sleep_ms (5000);
+
+    const int q = 15; //Q15 16bit固定小数点数指定
+
+    {
+        absolute_time_t begin;
+        absolute_time_t end;
+        volatile float x = 0.0f;
+        begin = get_absolute_time();
+        for (volatile int m = 0; m < 20000; ++m)
+        {
+            x = fix2float (m, 15);
+        }
+        end = get_absolute_time();
+        const auto t = absolute_time_diff_us (begin, end);
+        std::printf ("fix2float time: %llu\n", t);
+    }
+
+    {
+        absolute_time_t begin;
+        absolute_time_t end;
+        volatile float x = 0.0f;
+        begin = get_absolute_time();
+        for (volatile int m = 0; m < 20000; ++m)
+        {
+            x = m / 32768.0f;
+        }
+        end = get_absolute_time();
+        const auto t = absolute_time_diff_us (begin, end);
+        std::printf ("float div time: %llu\n", t);
+    }
 
     while (1)
     {
-        busy_wait_ms (1);
-
-        std::printf ("test\n");                                     //USB-Serial console output
-        SEGGER_RTT_WriteString (0, "Hello World from SEGGER!\r\n"); //SEGGER RTT console output
-
         //LED blink
         gpio_put (pin::led, 1);
         sleep_ms (250);
