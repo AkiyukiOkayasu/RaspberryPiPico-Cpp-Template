@@ -46,6 +46,7 @@ pico_enable_stdio_uart(${PROJECT_NAME} 0)# Disable stdio to UART
 pico_add_extra_outputs(${PROJECT_NAME})# Create map/bin/hex/uf2 file etc.
 target_link_libraries(${PROJECT_NAME} 
   pico_stdlib
+  pico_bootsel_via_double_reset# Reset twice quickly to enter BOOTSEL mode
   # hardware_i2c
   # hardware_pwm
   # hardware_adc
