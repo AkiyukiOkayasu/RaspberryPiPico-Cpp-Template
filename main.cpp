@@ -44,6 +44,16 @@ int main()
 
     sleep_ms (5000);
 
+    //GPOUT0初期化
+    clock_gpio_init (pin::clock::out0,                                 //出力GPOUT0
+                     CLOCKS_CLK_GPOUT0_CTRL_AUXSRC_VALUE_CLKSRC_GPIN0, //GPINをクロックソースにする
+                     1);                                               //分周比
+    //GPIN0初期化
+    clock_configure_gpin (clk_gpout0, //クロック出力先
+                          20,         //GPIO 20 or 22 only
+                          12288000,   //12.288MHz この値がどう使われるのかは不明
+                          12288000);  //この値がどう使われるのかは不明
+
     const int q = 15; //Q15 16bit固定小数点数指定
 
     {

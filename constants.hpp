@@ -39,6 +39,16 @@ namespace DCDC
 {
     inline constexpr unsigned int PS_CONTROL = 23; //GPIO23
 }
+
+namespace clock
+{
+    inline constexpr unsigned int in0 = 20;
+    inline constexpr unsigned int in1 = 22;
+    inline constexpr unsigned int out0 = 21;
+    inline constexpr unsigned int out1 = 23;
+    inline constexpr unsigned int out2 = 24;
+    inline constexpr unsigned int out3 = 25; //onboard ledにつながっているので注意
+} // namespace clock
 } // namespace pin
 
 namespace ADC
