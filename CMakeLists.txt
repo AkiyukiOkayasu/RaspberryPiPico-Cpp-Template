@@ -44,18 +44,24 @@ add_compile_options(-Wall
   # -Wno-maybe-uninitialized
 )
 
-pico_enable_stdio_usb(${PROJECT_NAME} 1)# Enable stdio to USB serial
+pico_enable_stdio_usb(${PROJECT_NAME} 0) # Disable stdio to USB serial
 pico_enable_stdio_uart(${PROJECT_NAME} 0) # Disable stdio to UART
 pico_add_extra_outputs(${PROJECT_NAME}) # Create map/bin/hex/uf2 file etc.
 target_link_libraries(${PROJECT_NAME}
   pico_stdlib
-  pico_bootsel_via_double_reset# Reset twice quickly to enter BOOTSEL mode
+
+  # pico_bootsel_via_double_reset# Reset twice quickly to enter BOOTSEL mode
+  pico_bootrom
+
   # hardware_i2c
   # hardware_pwm
   # hardware_adc
   hardware_clocks
+
   # hardware_pio
-  # tinyusb_device
+  tinyusb_device
+  tinyusb_board
+
   # pum
   # ame
 )
